@@ -37,15 +37,33 @@ button{padding:8px 12px;border-radius:6px;border:0;background:#1e88e5;color:whit
 </section>
 
 <script>
-/* ------------------ DATA ------------------ */
+/* ------------------ DATA: 10 SETS ------------------ */
 const pronSets = [
   ["The entrepreneur launched an innovative solution to a global problem.","Effective communication requires both clarity and confidence.","The temperature fluctuates dramatically in this region.","The architecture of this building is truly magnificent.","Please schedule the presentation for Wednesday afternoon."],
-  ["Technology is evolving faster than ever before.","Global warming affects every continent on Earth.","Teamwork and dedication lead to success.","Artificial intelligence is transforming industries.","A balanced diet is essential for a healthy life."]
+  ["Technology is evolving faster than ever before.","Global warming affects every continent on Earth.","Teamwork and dedication lead to success.","Artificial intelligence is transforming industries.","A balanced diet is essential for a healthy life."],
+  ["Time management is crucial for productivity.","Reading books broadens knowledge.","Exercise helps maintain physical and mental health.","Traveling teaches us about diverse cultures.","Learning new languages enhances cognitive skills."],
+  ["Digital marketing is a growing field.","Remote work has changed the corporate landscape.","Cloud computing provides scalable solutions.","Data privacy is a major concern today.","Innovation drives competitive advantage in business."],
+  ["Sustainable energy is the need of the hour.","Volunteering builds empathy and community.","Public speaking boosts confidence and communication.","Healthy habits lead to long-term wellness.","Team collaboration increases efficiency in projects."],
+  ["Leadership involves guiding and motivating others.","Problem-solving skills are highly valued.","Effective meetings save time and resources.","Mindfulness improves focus and reduces stress.","Networking helps career development."],
+  ["Artificial intelligence can automate tasks.","Cybersecurity protects sensitive information.","E-learning platforms are revolutionizing education.","Social media influences public opinion.","Project planning ensures timely delivery."],
+  ["Entrepreneurship requires risk-taking and innovation.","Emotional intelligence is important for leaders.","Critical thinking aids decision-making.","Cultural awareness improves workplace harmony.","Customer satisfaction is key to business success."],
+  ["Healthy eating enhances performance.","Time-bound goals improve productivity.","Innovation fosters competitive edge.","Continuous learning keeps professionals relevant.","Effective teamwork leads to better results."],
+  ["Sustainability impacts long-term growth.","Digital transformation drives efficiency.","Feedback helps personal and professional growth.","Public relations shape organizational image.","Negotiation skills are vital in business."]
 ];
+
 const speakSets = [
   ["Describe your favorite hobby and explain why you enjoy it.","Talk about a challenging project or task you’ve completed recently."],
-  ["Describe a memorable trip you have taken.","Explain a skill you would like to learn and why."]
+  ["Describe a memorable trip you have taken.","Explain a skill you would like to learn and why."],
+  ["Discuss a book that influenced your life.","Share an experience where you helped someone."],
+  ["Talk about a recent technological innovation.","Describe a leadership experience you had."],
+  ["Explain a personal achievement you are proud of.","Talk about a team activity you enjoyed."],
+  ["Discuss a problem you solved creatively.","Describe a professional goal you aim to achieve."],
+  ["Share your thoughts on digital transformation.","Describe a hobby you would like to try."],
+  ["Talk about an ethical dilemma you faced.","Describe your ideal workplace."],
+  ["Explain a time you managed stress effectively.","Share an experience of learning a new skill."],
+  ["Discuss a social issue important to you.","Describe a memorable event in your community."]
 ];
+
 const grammarSets = [
   { questions:[{ q:"She ____ to the gym every morning.", opts:["go","goes","gone"], ans:"goes" },
                { q:"If I ____ you, I would take the offer.", opts:["was","were","am"], ans:"were" },
@@ -56,8 +74,49 @@ const grammarSets = [
                { q:"By next month, we ____ our exams.", opts:["finish","will finish","will have finished"], ans:"will have finished" },
                { q:"She didn't come, ____?", opts:["did she","does she","didn't she"], ans:"did she" },
                { q:"The book ____ by my friend.", opts:["was written","written","is writing"], ans:"was written" },
-               { q:"I have lived here ____ 2018.", opts:["for","since","from"], ans:"since" }]}
+               { q:"I have lived here ____ 2018.", opts:["for","since","from"], ans:"since" }]},
+  { questions:[{ q:"He always ____ his homework on time.", opts:["do","does","did"], ans:"does" },
+               { q:"If I ____ rich, I would travel the world.", opts:["am","were","was"], ans:"were" },
+               { q:"You must ____ your assignments.", opts:["finish","finished","finishing"], ans:"finish" },
+               { q:"The train ____ at 9 PM.", opts:["arrive","arrives","arrived"], ans:"arrives" },
+               { q:"I have ____ a new language.", opts:["learn","learned","learning"], ans:"learned" }]},
+  { questions:[{ q:"She ____ the piano beautifully.", opts:["play","plays","played"], ans:"plays" },
+               { q:"They ____ already left.", opts:["has","have","had"], ans:"have" },
+               { q:"We ____ dinner when he arrived.", opts:["were having","have","had"], ans:"were having" },
+               { q:"If it ____ tomorrow, we will stay home.", opts:["rains","rain","rained"], ans:"rains" },
+               { q:"I ____ never seen this movie.", opts:["have","has","had"], ans:"have" }]},
+  { questions:[{ q:"He ____ to school every day.", opts:["walk","walks","walking"], ans:"walks" },
+               { q:"By next year, I ____ my degree.", opts:["will complete","complete","completed"], ans:"will complete" },
+               { q:"She ____ not like coffee.", opts:["does","do","did"], ans:"does" },
+               { q:"The movie ____ interesting.", opts:["is","are","was"], ans:"is" },
+               { q:"They ____ been friends for years.", opts:["has","have","had"], ans:"have" }]},
+  { questions:[{ q:"If I ____ earlier, I wouldn't have missed the bus.", opts:["leave","left","had left"], ans:"had left" },
+               { q:"She ____ in London.", opts:["live","lives","lived"], ans:"lives" },
+               { q:"He ____ his work carefully.", opts:["do","does","did"], ans:"does" },
+               { q:"We ____ dinner at 8 PM yesterday.", opts:["have","had","has"], ans:"had" },
+               { q:"I ____ my keys yesterday.", opts:["lose","lost","loses"], ans:"lost" }]},
+  { questions:[{ q:"They ____ to Paris last summer.", opts:["go","went","gone"], ans:"went" },
+               { q:"She ____ English very well.", opts:["speaks","speak","spoke"], ans:"speaks" },
+               { q:"I ____ breakfast every morning.", opts:["eat","ate","eaten"], ans:"eat" },
+               { q:"By 2025, we ____ completed the project.", opts:["will have","will","have"], ans:"will have" },
+               { q:"He ____ like pizza.", opts:["do","does","did"], ans:"does" }]},
+  { questions:[{ q:"She ____ happy with her results.", opts:["is","are","was"], ans:"is" },
+               { q:"They ____ playing tennis now.", opts:["are","is","were"], ans:"are" },
+               { q:"I ____ seen this before.", opts:["have","has","had"], ans:"have" },
+               { q:"If it ____ rain, we will stay home.", opts:["does","did","do"], ans:"does" },
+               { q:"He ____ to school yesterday.", opts:["go","went","gone"], ans:"went" }]},
+  { questions:[{ q:"I ____ not know the answer.", opts:["do","does","did"], ans:"do" },
+               { q:"She ____ reading a book.", opts:["is","are","was"], ans:"is" },
+               { q:"We ____ been waiting for an hour.", opts:["have","has","had"], ans:"have" },
+               { q:"They ____ like ice cream.", opts:["does","do","did"], ans:"do" },
+               { q:"He ____ gone to the market.", opts:["has","have","had"], ans:"has" }]},
+  { questions:[{ q:"By next week, I ____ finished my work.", opts:["will have","will","have"], ans:"will have" },
+               { q:"She ____ happy to help.", opts:["is","are","was"], ans:"is" },
+               { q:"I ____ never eaten sushi.", opts:["have","has","had"], ans:"have" },
+               { q:"They ____ going to the park.", opts:["are","is","was"], ans:"are" },
+               { q:"He ____ like to swim.", opts:["does","do","did"], ans:"does" }]}
 ];
+
 const listeningSets = [
   { passage:"A company decided to change its remote work policy due to decreasing productivity. Employees were asked to return to the office three days a week. The management hopes this will increase collaboration and communication among teams.",
     qs:[{id:"L1Q1",text:"Why did the company change its policy?",ans:"productivity"},
@@ -66,7 +125,39 @@ const listeningSets = [
   { passage:"The city introduced electric buses to reduce pollution. Passengers found them quieter and more comfortable than regular buses. The government plans to expand the service next year.",
     qs:[{id:"L2Q1",text:"Why were electric buses introduced?",ans:"pollution"},
         {id:"L2Q2",text:"How did passengers find them?",ans:"comfortable"},
-        {id:"L2Q3",text:"What will the government do next year?",ans:"expand"}]}
+        {id:"L2Q3",text:"What will the government do next year?",ans:"expand"}]},
+  { passage:"The university organized a seminar on renewable energy. Students and faculty attended and learned about solar and wind energy applications.",
+    qs:[{id:"L3Q1",text:"What was the topic of the seminar?",ans:"renewable energy"},
+        {id:"L3Q2",text:"Who attended the seminar?",ans:"students"},
+        {id:"L3Q3",text:"Which energy types were discussed?",ans:"solar"}]},
+  { passage:"A bakery launched a new line of organic bread. Customers appreciated the quality, and sales increased over the next month.",
+    qs:[{id:"L4Q1",text:"What product was launched?",ans:"bread"},
+        {id:"L4Q2",text:"What type of bread was it?",ans:"organic"},
+        {id:"L4Q3",text:"What happened to sales?",ans:"increased"}]},
+  { passage:"The local government started a campaign to reduce plastic use. Citizens were encouraged to bring reusable bags and containers.",
+    qs:[{id:"L5Q1",text:"What was the campaign about?",ans:"plastic"},
+        {id:"L5Q2",text:"What were citizens encouraged to bring?",ans:"reusable"},
+        {id:"L5Q3",text:"Who started the campaign?",ans:"government"}]},
+  { passage:"A tech company introduced a new smartphone with advanced camera features. The phone received positive reviews online.",
+    qs:[{id:"L6Q1",text:"What product was introduced?",ans:"smartphone"},
+        {id:"L6Q2",text:"What was special about it?",ans:"camera"},
+        {id:"L6Q3",text:"How was it received?",ans:"positive"}]},
+  { passage:"The hospital organized a health camp for free check-ups. Many people attended and benefited from medical consultations.",
+    qs:[{id:"L7Q1",text:"What kind of camp was organized?",ans:"health"},
+        {id:"L7Q2",text:"Was it free?",ans:"free"},
+        {id:"L7Q3",text:"Who benefited?",ans:"people"}]},
+  { passage:"The city library added new books in various languages. Readers enjoyed the collection and borrowed many books.",
+    qs:[{id:"L8Q1",text:"What did the library add?",ans:"books"},
+        {id:"L8Q2",text:"Were the books in one language?",ans:"no"},
+        {id:"L8Q3",text:"Who enjoyed the collection?",ans:"readers"}]},
+  { passage:"A restaurant started offering vegan options on their menu. Customers appreciated the initiative and ordered more frequently.",
+    qs:[{id:"L9Q1",text:"What new options were offered?",ans:"vegan"},
+        {id:"L9Q2",text:"Where were these options added?",ans:"menu"},
+        {id:"L9Q3",text:"How did customers respond?",ans:"appreciated"}]},
+  { passage:"The company provided online training for employees to enhance skills. Participation was high, and feedback was positive.",
+    qs:[{id:"L10Q1",text:"What was provided to employees?",ans:"training"},
+        {id:"L10Q2",text:"Was it offline or online?",ans:"online"},
+        {id:"L10Q3",text:"What was the feedback?",ans:"positive"}]}
 ];
 
 /* ------------------ UTIL ------------------ */
@@ -168,7 +259,6 @@ function checkMCQ(){
   currentGrammarQuestions.forEach((q,idx)=>{
     const val=document.querySelector(`input[name="q${idx+1}"]:checked`)?.value;
     const divs=document.querySelectorAll("#mcqcontainer .mcq")[idx];
-    // Remove previous hints
     divs.querySelectorAll(".correct, .wrong").forEach(el=>el.remove());
     if(val===q.ans){score++; divs.innerHTML+=` <span class="correct">Correct</span>`;}
     else{divs.innerHTML+=` <span class="wrong">Wrong, Answer: ${q.ans}</span>`;}
@@ -197,7 +287,7 @@ function checkListening(){
   lset.qs.forEach(q=>{
     const val=document.getElementById(q.id).value.toLowerCase();
     const inputEl=document.getElementById(q.id);
-    inputEl.nextElementSibling?.remove(); // remove previous hints
+    inputEl.nextElementSibling?.remove();
     const span=document.createElement("span");
     span.className="small";
     if(val.includes(q.ans)){c++; span.style.color="green"; span.innerText=" Correct";}
